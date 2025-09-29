@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(45deg, cyan, yellow);
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.9);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 40px;
+            border-radius: 15px;
+            color: #fff;
+            width: 300px; /* largura fixa para alinhar tudo */
+            box-sizing: border-box;
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 12px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        .senha-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .senha-container input {
+            width: 100%;
+            padding-right: 35px; /* espaço pro olho */
+        }
+
+        .senha-container span {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        button {
+            background-color: dodgerblue;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: deepskyblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <!-- Campo de nome -->
+            <input type="text" placeholder="Nome" id="nome">
+            <br><br>
+
+            <!-- Campo de senha com ícone -->
+            <div class="senha-container">
+                <input type="password" placeholder="Senha" id="senha">
+                <span id="mostrarSenha">👁️</span>
+            </div>
+
+            <!-- Botão -->
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        // Validação dos campos
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById("nome").value.trim();
+            const senha = document.getElementById("senha").value.trim();
+
+            if (!nome || !senha) {
+                alert("Por favor, preencha todos os campos.");
+            } else {
+                alert("Login enviado com sucesso!");
+            }
+        });
+
+        // Mostrar/Ocultar senha
+        document.getElementById("mostrarSenha").addEventListener("click", function () {
+            const senhaInput = document.getElementById("senha");
+            senhaInput.type = senhaInput.type === "password" ? "text" : "password";
+        });
+    </script>
+</body>
+</html>
